@@ -1,0 +1,20 @@
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Environment Type</th>
+                <th scope="col">Oracle host</th>
+                <th scope="col">Webserver host</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td> {{data.environment_type}}</td>
+                <td> {{data.oracle_connection.cod_tds.primary.node1.host}}</td>
+                <td> {{data.webserver_host}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
