@@ -1,5 +1,4 @@
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
 import { DetailsComponent } from './details/details.component';
 import { DeplRecordComponent } from './depl-record/depl-record.component';
 
