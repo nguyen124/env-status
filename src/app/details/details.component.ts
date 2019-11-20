@@ -7,8 +7,7 @@ import { DataService } from '../data.service';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  data: object
-
+  data: object;
 
   constructor(private _dataSvc: DataService) { }
 

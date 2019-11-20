@@ -2,18 +2,22 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Environment Type</th>
-                <th scope="col">Oracle host</th>
-                <th scope="col">Webserver host</th>
+                <th>Name</th>
+                <th>Environment Type</th>
+                <th>Infrastructure</th>
+                <th>Purpose</th>
+                <th>Active for Deployment</th>
+                <th>Arch Version</th>
+                <th>Code Version</th>
+                <th>Sched Version</th>
+                <th>Age (days)</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td> {{data.environment_type}}</td>
-                <td> {{data.oracle_connection.cod_tds.primary.node1.host}}</td>
-                <td> {{data.webserver_host}}</td>
+            <tr *ngFor="let item of (data| keyvalue)">
+                <td>{{item.key}}</td>
+                <td>{{item.value.environment_type}}</td>
+
             </tr>
         </tbody>
     </table>
