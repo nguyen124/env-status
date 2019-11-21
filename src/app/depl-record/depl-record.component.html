@@ -1,6 +1,6 @@
 <ng-container *ngIf="option.name=='Environment'; else elseBlock">
-    <a class="btn" href="env-details"> {{option.value}}</a>
+    <a class="btn" href="env-details"> {{data}}</a>
 </ng-container>
 <ng-template #elseBlock>
-    {{option.value}}
+    {{data}}
 </ng-template>

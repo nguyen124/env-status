@@ -9,13 +9,25 @@ export class DeplRecordComponent implements OnInit {
 
   @Input() record: any;
   @Input() option: any;
+  data: string;
   constructor() { }
 
   ngOnInit() {
-
-    this.option.value = this.record.env.environment_type;
+    this.data = this.deepFind(this.record, this.option.value);
   }
 
+  deepFind(obj, path) {
+    var paths = path.split('.')
+      , current = obj
+      , i;
 
-
+    for (i = 0; i < paths.length; ++i) {
+      if (current[paths[i]] == undefined) {
+        return undefined;
+      } else {
+        current = current[paths[i]];
+      }
+    }
+    return current;
+  }
 }
