@@ -1,43 +1,6 @@
-<div class="row">
-    <button type="button" class="btn-xs btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-    </button>
-    <div class="dropdown-menu">
-        <div class="mt-2 ml-3">
-            <div *ngFor="let option of options">
-                <label>
-                    <input type="checkbox" name="options" value="{{option.value}}" [(ngModel)]="option.checked" />
-                    {{option.name}}
-                </label>
-            </div>
-        </div>
-    </div>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <ng-container *ngFor="let option of options">
-                    <th *ngIf="option.checked">
-                        {{option.name}}
-                    </th>
-                </ng-container>
-            </tr>
-        </thead>
-        <tbody>
-            <!--No data strucutre yet, hard code for now-->
-            <tr>
-                <ng-container *ngFor="let option of options">
-                    <td *ngIf="option.checked">
-                        <ng-container *ngIf="option.name=='Environment'; else elseBlock">
-                            <a class="btn" href="env-details"> {{option.value}}</a>
-                        </ng-container>
-                        <ng-template #elseBlock>
-                            {{option.value}}
-                        </ng-template>
-                    </td>
-
-                </ng-container>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<ng-container *ngIf="option.name=='Environment'; else elseBlock">
+    <a class="btn" href="env-details"> {{option.value}}</a>
+</ng-container>
+<ng-template #elseBlock>
+    {{option.value}}
+</ng-template>
