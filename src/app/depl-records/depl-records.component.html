@@ -1,21 +1,27 @@
-<button type="button" class="btn-xs btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-    aria-expanded="false">
-</button>
-<div class="dropdown-menu">
-    <div class="mt-2 ml-3">
-        <div *ngFor="let option of options">
-            <label>
-                <input type="checkbox" name="options" [(ngModel)]="option.checked" />
-                {{option.name}}
-            </label>
+<div class="row mt-2">
+    <button type="button" class="btn-xs btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+    </button>
+    <div class="dropdown-menu">
+        <div class="mt-2 ml-3">
+            <div *ngFor="let option of options">
+                <label>
+                    <input type="checkbox" name="options" [(ngModel)]="option.checked" />
+                    {{option.name}}
+                </label>
+            </div>
         </div>
     </div>
-</div>
 
+    <input type="text" class="ml-2" placeholder="Enter row numbers to compare.For example: 1,2,3 ..."
+        style="width: 90%;" [(ngModel)]="selectRowStr" (ngModelChange)="dataChanged($event)" />
+
+</div>
 <div class="row">
     <table class="table">
         <thead>
             <tr>
+                <th>Index</th>
                 <ng-container *ngFor="let option of options">
                     <th *ngIf="option.checked">
                         {{option.name}}
@@ -24,8 +30,9 @@
             </tr>
         </thead>
         <tbody>
-            <ng-container *ngFor="let record of deplRecords">
-                <tr>
+            <ng-container *ngFor="let record of deplRecords; let i = index">
+                <tr *ngIf="selected[i]">
+                    <td>#{{i}}</td>
                     <ng-container *ngFor="let option of options">
                         <td *ngIf="option.checked">
                             <app-depl-record [record]="record" [option]="option"></app-depl-record>

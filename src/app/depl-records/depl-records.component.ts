@@ -8,6 +8,7 @@ import { DataService } from '../data.service';
 })
 export class DeplRecordsComponent implements OnInit {
   deplRecords: any;
+  selectRowStr: string;
   options = [
     { name: 'Environment', value: 'env.environment_type', checked: true },
     { name: 'Code Version', value: 'env.oracle_connection.cod_tds.primary.node1.host', checked: true },
@@ -21,6 +22,7 @@ export class DeplRecordsComponent implements OnInit {
     { name: 'Deployed MDS Checksum', value: 'env.host_connections.env1-message1_port', checked: false },
     { name: 'Deployment Timestamp', value: 'env.host_connections.env1-svcapp1_ip', checked: false }
   ]
+  selected = [];
 
   constructor(private _dataSvc: DataService) {
 
@@ -28,6 +30,41 @@ export class DeplRecordsComponent implements OnInit {
 
   ngOnInit() {
     this.deplRecords = this._dataSvc.getDeplRecords();
+    this.showAllRow();
   }
 
+  dataChanged(event) {
+    if (this.selectRowStr.trim()) {
+      var indexes = this.selectRowStr.split(',').map(value => {
+        var temp = value.trim();
+        if (temp) {
+          return +temp;
+        } else {
+          return NaN;
+        }
+      }).filter((value: number) => {
+        return (Number.isInteger(value) && value >= 0 && value < this.selected.length);
+      });
+      if (indexes.length > 0) {
+        this.hideAllRow();
+        for (var i = 0; i < indexes.length; i++) {
+          this.selected[indexes[i]] = true;
+        }
+      }
+    } else {
+      this.showAllRow();
+    }
+  }
+
+  showAllRow() {
+    for (var i = 0; i < this.deplRecords.length; i++) {
+      this.selected[i] = true;
+    }
+  }
+
+  hideAllRow() {
+    for (var i = 0; i < this.deplRecords.length; i++) {
+      this.selected[i] = false;
+    }
+  }
 }
