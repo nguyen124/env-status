@@ -7,8 +7,8 @@ export class DataService {
 
   constructor(private _http: HttpClient) { }
 
-  getData(env, artifact) {   
-    var url = "/" + artifact + "/assets/build-info/app-manifest.json"
+  getData(env, artifact) {
+    var url = env + "/" + artifact + "/assets/build-info/app-manifest.json"
     return this._http.get<Object>(url);
   }
 }

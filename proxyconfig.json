@@ -1,7 +1,26 @@
 {
-    "/": {
+    "/cct601": {
         "target": "https://sa-cct601.test.studentaid.gov",
         "secure": false,
-        "changeOrigin": true
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/cct601": ""
+        }
+    },
+    "/pdt601": {
+        "target": "https://sa-pdt601.test.studentaid.gov",
+        "secure": false,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/pdt601": ""
+        }
+    },
+    "/uat601": {
+        "target": "https://sa-uat601.test.studentaid.gov",
+        "secure": false,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/uat601": ""
+        }
     }
 }

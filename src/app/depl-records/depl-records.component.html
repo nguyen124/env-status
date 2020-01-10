@@ -1,4 +1,18 @@
 <div class="row mt-2">
+    <button type="button" class="btn-xs btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+    </button>
+    <div class="dropdown-menu">
+        <div class="mt-2 ml-3">
+            <div *ngFor="let option of options">
+                <label>
+                    <input type="checkbox" name="options" [(ngModel)]="option.checked" />
+                    {{option.name}}
+                </label>
+            </div>
+        </div>
+    </div>
+
     <label class="pr-1">Environments</label>
     <select class="mr-1 mb-1" [(ngModel)]="selectedEnv" (change)='onOptionsSelected($event.target.value)'>
         <ng-container *ngFor="let evn of environments">
@@ -16,3 +30,27 @@
 
 
 <ngx-json-viewer *ngIf="deplRecords" [json]="deplRecords" [expanded]="false"></ngx-json-viewer>
+
+
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <ng-container *ngFor="let option of options">
+                    <th *ngIf="option.checked">
+                        {{option.name}}
+                    </th>
+
+                </ng-container>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let option of options">
+                <td *ngIf="option.checked">
+                    {{deplRecords[option.value]}}
+                </td>
+            </ng-container>
+        </tbody>
+    </table>
+</div>
+© 2020 GitHub, Inc.

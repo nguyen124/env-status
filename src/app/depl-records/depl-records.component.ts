@@ -10,17 +10,17 @@ export class DeplRecordsComponent implements OnInit {
   deplRecords: any;
   selectRowStr: string;
   options = [
-    { name: 'Environment', value: 'env.environment_type', checked: true },
-    { name: 'Code Version', value: 'env.oracle_connection.cod_tds.primary.node1.host', checked: true },
-    { name: 'Assignment Type', value: 'env.oracle_connection.cod_rds.primary.node1.host', checked: true },
-    { name: 'Artifact', value: 'env.webserver_host', checked: true },
-    { name: 'Pending Deployment Version', value: 'env.api_port', checked: true },
-    { name: 'Pending Deployment Build', value: 'env.sql_host', checked: true },
-    { name: 'Last Deployed Version', value: 'env.schemaprefix.sl', checked: false },
-    { name: 'Last Deployed Build', value: 'env.schemas.oracle.sl', checked: false },
-    { name: 'Deployed Revision', value: 'env.host_connections.env1-message1_ip', checked: false },
-    { name: 'Deployed MDS Checksum', value: 'env.host_connections.env1-message1_port', checked: false },
-    { name: 'Deployment Timestamp', value: 'env.host_connections.env1-svcapp1_ip', checked: false }
+    { name: 'Implementation-Title', value: 'Implementation-Title', checked: true },
+    { name: 'Implementation-Version', value: 'Implementation-Version', checked: true },
+    { name: 'Implementation-Vendor-Id', value: 'Implementation-Vendor-Id', checked: true },
+    { name: 'Implementation-Vendor', value: 'Implementation-Vendor', checked: true },
+    { name: 'Implementation-URL', value: 'Implementation-URL', checked: true },
+    { name: 'Build-Job', value: 'Build-Job', checked: true },
+    { name: 'Build-Tag', value: 'Build-Tag', checked: true },
+    { name: 'Build-Id', value: 'Build-Id', checked: true },
+    { name: 'Build-Number', value: 'Build-Number', checked: true },
+    { name: 'Build-Revision', value: 'Build-Revision', checked: true },
+    { name: 'Build-Time', value: 'Build-Time', checked: true }
   ]
 
   environments = ["cct601", "pdt601", "uat601"];
@@ -40,7 +40,7 @@ export class DeplRecordsComponent implements OnInit {
 
   onOptionsSelected(value) {
     console.log(this.selectedEnv + " -" + this.selectedArtifact);
-    this._dataSvc.getData(this.selectedEnv, this.selectedArtifact).subscribe(data => {     
+    this._dataSvc.getData(this.selectedEnv, this.selectedArtifact).subscribe(data => {
       this.deplRecords = data;
     });
   }
