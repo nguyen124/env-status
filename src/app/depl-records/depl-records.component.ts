@@ -30,54 +30,16 @@ export class DeplRecordsComponent implements OnInit {
   selectedEnv: string = this.environments[0];
   selectedArtifact: string = this.artifacts[0];
 
-
   constructor(private _dataSvc: DataService) {
 
   }
 
   ngOnInit() {
     this.deplRecords = this._dataSvc.getData(this.selectedEnv, this.selectedArtifact);
-    //this.showAllRow();
-  }
-
-  dataChanged(event) {
-    // if (this.selectRowStr.trim()) {
-    //   var indexes = this.selectRowStr.split(',').map(value => {
-    //     var temp = value.trim();
-    //     if (temp) {
-    //       return +temp;
-    //     } else {
-    //       return NaN;
-    //     }
-    //   }).filter((value: number) => {
-    //     return (Number.isInteger(value) && value >= 0 && value < this.selected.length);
-    //   });
-    //   if (indexes.length > 0) {
-    //     this.hideAllRow();
-    //     for (var i = 0; i < indexes.length; i++) {
-    //       this.selected[indexes[i]] = true;
-    //     }
-    //   }
-    // } else {
-    //   this.showAllRow();
-    // }
   }
 
   onOptionsSelected(value) {
     this.deplRecords = this._dataSvc.getData(this.selectedEnv, this.selectedArtifact);
-
-
   }
 
-  // showAllRow() {
-  //   for (var i = 0; i < this.deplRecords.length; i++) {
-  //     this.selected[i] = true;
-  //   }
-  // }
-
-  // hideAllRow() {
-  //   for (var i = 0; i < this.deplRecords.length; i++) {
-  //     this.selected[i] = false;
-  //   }
-  // }
 }
