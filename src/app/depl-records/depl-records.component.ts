@@ -35,11 +35,14 @@ export class DeplRecordsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.deplRecords = this._dataSvc.getData(this.selectedEnv, this.selectedArtifact);
+    this.onOptionsSelected(null);
   }
 
   onOptionsSelected(value) {
-    this.deplRecords = this._dataSvc.getData(this.selectedEnv, this.selectedArtifact);
+    console.log(this.selectedEnv + " -" + this.selectedArtifact);
+    this._dataSvc.getData(this.selectedEnv, this.selectedArtifact).subscribe(data => {     
+      this.deplRecords = data;
+    });
   }
 
 }

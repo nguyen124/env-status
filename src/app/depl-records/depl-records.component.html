@@ -11,9 +11,8 @@
         <ng-container *ngFor="let art of artifacts">
             <option value="{{art}}">{{art}}</option>
         </ng-container>
-
     </select>
 </div>
 
 
-<ngx-json-viewer [json]="deplRecords" [expanded]="false"></ngx-json-viewer>
+<ngx-json-viewer *ngIf="deplRecords" [json]="deplRecords" [expanded]="false"></ngx-json-viewer>
