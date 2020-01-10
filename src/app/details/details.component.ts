@@ -31,7 +31,7 @@ export class DetailsComponent implements OnInit {
   constructor(private _dataSvc: DataService) { }
 
   ngOnInit() {
-    this.data = this._dataSvc.getEnvDetails();
+    //this.data = this._dataSvc.getEnvDetails();
   }
 
 }

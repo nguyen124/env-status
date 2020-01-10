@@ -23,48 +23,54 @@ export class DeplRecordsComponent implements OnInit {
     { name: 'Deployment Timestamp', value: 'env.host_connections.env1-svcapp1_ip', checked: false }
   ]
   selected = [];
+  selectedEnv: string = "cct601";
+  selectedArtifact: string = "dashboard";
 
   constructor(private _dataSvc: DataService) {
 
   }
 
   ngOnInit() {
-    this.deplRecords = this._dataSvc.getDeplRecords();
-    this.showAllRow();
+    this.deplRecords = this._dataSvc.getData(this.selectedEnv, this.selectedArtifact);
+    //this.showAllRow();
   }
 
   dataChanged(event) {
-    if (this.selectRowStr.trim()) {
-      var indexes = this.selectRowStr.split(',').map(value => {
-        var temp = value.trim();
-        if (temp) {
-          return +temp;
-        } else {
-          return NaN;
-        }
-      }).filter((value: number) => {
-        return (Number.isInteger(value) && value >= 0 && value < this.selected.length);
-      });
-      if (indexes.length > 0) {
-        this.hideAllRow();
-        for (var i = 0; i < indexes.length; i++) {
-          this.selected[indexes[i]] = true;
-        }
-      }
-    } else {
-      this.showAllRow();
-    }
+    // if (this.selectRowStr.trim()) {
+    //   var indexes = this.selectRowStr.split(',').map(value => {
+    //     var temp = value.trim();
+    //     if (temp) {
+    //       return +temp;
+    //     } else {
+    //       return NaN;
+    //     }
+    //   }).filter((value: number) => {
+    //     return (Number.isInteger(value) && value >= 0 && value < this.selected.length);
+    //   });
+    //   if (indexes.length > 0) {
+    //     this.hideAllRow();
+    //     for (var i = 0; i < indexes.length; i++) {
+    //       this.selected[indexes[i]] = true;
+    //     }
+    //   }
+    // } else {
+    //   this.showAllRow();
+    // }
   }
 
-  showAllRow() {
-    for (var i = 0; i < this.deplRecords.length; i++) {
-      this.selected[i] = true;
-    }
+  onOptionsSelected(value) {
+    this.deplRecords = this._dataSvc.getData(this.selectedEnv, this.selectedArtifact);
   }
 
-  hideAllRow() {
-    for (var i = 0; i < this.deplRecords.length; i++) {
-      this.selected[i] = false;
-    }
-  }
+  // showAllRow() {
+  //   for (var i = 0; i < this.deplRecords.length; i++) {
+  //     this.selected[i] = true;
+  //   }
+  // }
+
+  // hideAllRow() {
+  //   for (var i = 0; i < this.deplRecords.length; i++) {
+  //     this.selected[i] = false;
+  //   }
+  // }
 }

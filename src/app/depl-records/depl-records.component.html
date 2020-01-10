@@ -1,6 +1,6 @@
 <div class="row mt-2">
-    <button type="button" class="btn-xs btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
+    <button type="button" class="btn-xs btn-success dropdown-toggle mr-1 mb-1" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
     </button>
     <div class="dropdown-menu">
         <div class="mt-2 ml-3">
@@ -13,11 +13,30 @@
         </div>
     </div>
 
-    <input type="text" class="ml-2" placeholder="Enter row numbers to compare.For example: 0,1,2,3 ..."
-        style="width: 90%;" [(ngModel)]="selectRowStr" (ngModelChange)="dataChanged($event)" />
+    <select class="mr-1 mb-1" [(ngModel)]="selectedEnv" (change)='onOptionsSelected($event.target.value)'>
+        <option value="cct601">cct601</option>
+        <option value="pdt601">pdt601</option>
+        <option value="uat601">uat601</option>
+    </select>
 
+    <select class="mr-1 mb-1" [(ngModel)]="selectedArtifact" (change)='onOptionsSelected($event.target.value)'>
+        <option value="dashboard">dashboard</option>
+        <option value="settings">settings</option>
+        <option value="help-center">help-center</option>
+        <option value="fsa-id">fsa-id</option>
+        <option value="universal-navigation">universal-navigation</option>
+        <option value="notifications">notifications</option>
+        <option value="mpn">mpn</option>
+        <option value="loan-simulator">loan-simulator</option>
+    </select>
+
+    <!-- <input type="text" class="ml-2" placeholder="Enter row numbers to compare.For example: 0,1,2,3 ..."
+        style="width: 90%;" [(ngModel)]="selectRowStr" (ngModelChange)="dataChanged($event)" /> -->
 </div>
-<div class="row">
+
+
+{{deplRecords | json}}
+<!-- <div class="row">
     <table class="table">
         <thead>
             <tr>
@@ -42,4 +61,4 @@
             </ng-container>
         </tbody>
     </table>
-</div>
+</div> -->
