@@ -13,13 +13,15 @@
         </div>
     </div>
 
+    <label class="pr-1">Environments</label>
     <select class="mr-1 mb-1" [(ngModel)]="selectedEnv" (change)='onOptionsSelected($event.target.value)'>
         <option value="cct601">cct601</option>
         <option value="pdt601">pdt601</option>
         <option value="uat601">uat601</option>
     </select>
 
-    <select class="mr-1 mb-1" [(ngModel)]="selectedArtifact" (change)='onOptionsSelected($event.target.value)'>
+    <label class="pr-1">Artifacts</label>
+    <select class=" mr-1 mb-1" [(ngModel)]="selectedArtifact" (change)='onOptionsSelected($event.target.value)'>
         <option value="dashboard">dashboard</option>
         <option value="settings">settings</option>
         <option value="help-center">help-center</option>
