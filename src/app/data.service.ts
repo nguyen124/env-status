@@ -11,5 +11,4 @@ export class DataService {
     var url = "https://studentaid." + env + ".dcc.atagc.com/" + artifact + "/assets/build-info/app-manifest.json"
     return this._http.get<Object>(url);
   }
-
 }

@@ -1,66 +1,19 @@
 <div class="row mt-2">
-    <button type="button" class="btn-xs btn-success dropdown-toggle mr-1 mb-1" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
-    </button>
-    <div class="dropdown-menu">
-        <div class="mt-2 ml-3">
-            <div *ngFor="let option of options">
-                <label>
-                    <input type="checkbox" name="options" [(ngModel)]="option.checked" />
-                    {{option.name}}
-                </label>
-            </div>
-        </div>
-    </div>
-
     <label class="pr-1">Environments</label>
     <select class="mr-1 mb-1" [(ngModel)]="selectedEnv" (change)='onOptionsSelected($event.target.value)'>
-        <option value="cct601">cct601</option>
-        <option value="pdt601">pdt601</option>
-        <option value="uat601">uat601</option>
+        <ng-container *ngFor="let evn of environments">
+            <option value="{{evn}}">{{evn}}</option>
+        </ng-container>
     </select>
 
     <label class="pr-1">Artifacts</label>
     <select class=" mr-1 mb-1" [(ngModel)]="selectedArtifact" (change)='onOptionsSelected($event.target.value)'>
-        <option value="dashboard">dashboard</option>
-        <option value="settings">settings</option>
-        <option value="help-center">help-center</option>
-        <option value="fsa-id">fsa-id</option>
-        <option value="universal-navigation">universal-navigation</option>
-        <option value="notifications">notifications</option>
-        <option value="mpn">mpn</option>
-        <option value="loan-simulator">loan-simulator</option>
-    </select>
+        <ng-container *ngFor="let art of artifacts">
+            <option value="{{art}}">{{art}}</option>
+        </ng-container>
 
-    <!-- <input type="text" class="ml-2" placeholder="Enter row numbers to compare.For example: 0,1,2,3 ..."
-        style="width: 90%;" [(ngModel)]="selectRowStr" (ngModelChange)="dataChanged($event)" /> -->
+    </select>
 </div>
 
 
-{{deplRecords | json}}
-<!-- <div class="row">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Index</th>
-                <ng-container *ngFor="let option of options">
-                    <th *ngIf="option.checked">
-                        {{option.name}}
-                    </th>
-                </ng-container>
-            </tr>
-        </thead>
-        <tbody>
-            <ng-container *ngFor="let record of deplRecords; let i = index">
-                <tr *ngIf="selected[i]">
-                    <td>#{{i}}</td>
-                    <ng-container *ngFor="let option of options">
-                        <td *ngIf="option.checked">
-                            <app-depl-record [record]="record" [option]="option"></app-depl-record>
-                        </td>
-                    </ng-container>
-                </tr>
-            </ng-container>
-        </tbody>
-    </table>
-</div> -->
+<ngx-json-viewer [json]="deplRecords" [expanded]="false"></ngx-json-viewer>

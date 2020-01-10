@@ -7,6 +7,8 @@ import { DetailsComponent } from './details/details.component';
 import { DeplRecordComponent } from './depl-record/depl-record.component';
 import { routing } from './app.routing';
 import { DeplRecordsComponent } from './depl-records/depl-records.component';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +20,7 @@ import { DeplRecordsComponent } from './depl-records/depl-records.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    NgxJsonViewerModule,
     routing
   ],
   providers: [],

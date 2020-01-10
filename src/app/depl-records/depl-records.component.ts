@@ -22,9 +22,14 @@ export class DeplRecordsComponent implements OnInit {
     { name: 'Deployed MDS Checksum', value: 'env.host_connections.env1-message1_port', checked: false },
     { name: 'Deployment Timestamp', value: 'env.host_connections.env1-svcapp1_ip', checked: false }
   ]
+
+  environments = ["cct601", "pdt601", "uat601"];
+  artifacts = ["dashboard", "settings", "help-center", "fsa-id", "universal-navigation", "notifications", "mpn", "loan-simulator"];
+
   selected = [];
-  selectedEnv: string = "cct601";
-  selectedArtifact: string = "dashboard";
+  selectedEnv: string = this.environments[0];
+  selectedArtifact: string = this.artifacts[0];
+
 
   constructor(private _dataSvc: DataService) {
 
@@ -60,6 +65,8 @@ export class DeplRecordsComponent implements OnInit {
 
   onOptionsSelected(value) {
     this.deplRecords = this._dataSvc.getData(this.selectedEnv, this.selectedArtifact);
+
+
   }
 
   // showAllRow() {
