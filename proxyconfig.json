@@ -1,0 +1,7 @@
+{
+    "/*": {
+        "target": "https://sa-cct601.test.studentaid.gov",
+        "secure": false,
+        "changeOrigin": true
+    }
+}

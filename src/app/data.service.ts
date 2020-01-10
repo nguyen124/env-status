@@ -7,8 +7,8 @@ export class DataService {
 
   constructor(private _http: HttpClient) { }
 
-  getData(env, artifact) {
-    var url = "https://studentaid." + env + ".dcc.atagc.com/" + artifact + "/assets/build-info/app-manifest.json"
+  getData(env, artifact) {   
+    var url = "https://sa-" + env + ".test.studentaid.gov/" + artifact + "/assets/build-info/app-manifest.json"
     return this._http.get<Object>(url);
   }
 }
