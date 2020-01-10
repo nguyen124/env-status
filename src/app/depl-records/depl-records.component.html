@@ -1,18 +1,4 @@
 <div class="row mt-2">
-    <button type="button" class="btn-xs btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-    </button>
-    <div class="dropdown-menu">
-        <div class="mt-2 ml-3">
-            <div *ngFor="let option of options">
-                <label>
-                    <input type="checkbox" name="options" [(ngModel)]="option.checked" />
-                    {{option.name}}
-                </label>
-            </div>
-        </div>
-    </div>
-
     <label class="pr-1">Environments</label>
     <select class="mr-1 mb-1" [(ngModel)]="selectedEnv" (change)='onOptionsSelected($event.target.value)'>
         <ng-container *ngFor="let evn of environments">
@@ -26,13 +12,30 @@
             <option value="{{art}}">{{art}}</option>
         </ng-container>
     </select>
+
+    <label class="mr-1">Prop</label>
+    <button type="button" class="btn-xs btn-success dropdown-toggle mr-1" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+    </button>
+    <div class="dropdown-menu">
+        <div class="mt-2 ml-3">
+            <div *ngFor="let option of options">
+                <label>
+                    <input type="checkbox" name="options" [(ngModel)]="option.checked" />
+                    {{option.name}}
+                </label>
+            </div>
+        </div>
+    </div>
+
 </div>
 
+<h1 *ngIf="!deplRecords" class="text-danger">Can't retrieve data</h1>
 
 <ngx-json-viewer *ngIf="deplRecords" [json]="deplRecords" [expanded]="false"></ngx-json-viewer>
 
 
-<div class="row">
+<div *ngIf="deplRecords" class="row">
     <table class="table">
         <thead>
             <tr>
@@ -45,7 +48,7 @@
         </thead>
         <tbody>
             <ng-container *ngFor="let option of options">
-                <td *ngIf="option.checked">
+                <td *ngIf="option.checked && deplRecords">
                     {{deplRecords[option.value]}}
                 </td>
             </ng-container>

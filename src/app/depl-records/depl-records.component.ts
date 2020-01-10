@@ -42,6 +42,8 @@ export class DeplRecordsComponent implements OnInit {
     console.log(this.selectedEnv + " -" + this.selectedArtifact);
     this._dataSvc.getData(this.selectedEnv, this.selectedArtifact).subscribe(data => {
       this.deplRecords = data;
+    }, err => {
+      this.deplRecords = null;
     });
   }
 
