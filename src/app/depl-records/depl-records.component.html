@@ -6,13 +6,6 @@
         </ng-container>
     </select>
 
-    <label class="pr-1">Artifacts</label>
-    <select class=" mr-1 mb-1" [(ngModel)]="selectedArtifact" (change)='onOptionsSelected($event.target.value)'>
-        <ng-container *ngFor="let art of artifacts">
-            <option value="{{art}}">{{art}}</option>
-        </ng-container>
-    </select>
-
     <label class="mr-1">Prop</label>
     <button type="button" class="btn-xs btn-success dropdown-toggle mr-1" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
@@ -27,31 +20,28 @@
             </div>
         </div>
     </div>
-
 </div>
 
-<h1 *ngIf="!deplRecords" class="text-danger">Can't retrieve data</h1>
-
-<ngx-json-viewer *ngIf="deplRecords" [json]="deplRecords" [expanded]="false"></ngx-json-viewer>
-
-
-<div *ngIf="deplRecords" class="row">
-    <table class="table">
+<!-- <ngx-json-viewer *ngIf="deplRecords" [json]="deplRecords" [expanded]="false"></ngx-json-viewer> -->
+<div class="row">
+    <table class="table table-sm mt-3 table-striped table-hover">
         <thead>
-            <tr>
-                <ng-container *ngFor="let option of options">
-                    <th *ngIf="option.checked">
+            <tr class="thead-dark">
+                <th>Artifact</th>
+                <th *ngFor="let option of options">
+                    <ng-container *ngIf="option.checked">
                         {{option.name}}
-                    </th>
-                </ng-container>
+                    </ng-container>
+                </th>
             </tr>
         </thead>
         <tbody>
-            <ng-container *ngFor="let option of options">
-                <td *ngIf="option.checked && deplRecords">
-                    {{deplRecords[option.value]}}
+            <tr *ngFor="let art of artifacts">
+                <td>{{art}}</td>
+                <td *ngFor="let option of options">
+                    <app-depl-record [artifact]="art" [option]="option" [selectedEnv]="selectedEnv"></app-depl-record>
                 </td>
-            </ng-container>
+            </tr>
         </tbody>
     </table>
 </div>
