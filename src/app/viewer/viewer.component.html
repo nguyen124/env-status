@@ -1,0 +1,4 @@
+<strong>Environment: </strong>
+<span><strong>{{selectedEnv}}</strong></span>
+<div *ngIf="data" [innerHtml]="data"></div>
+<div *ngIf="!data" class='text-danger'>Can't get data</div>
