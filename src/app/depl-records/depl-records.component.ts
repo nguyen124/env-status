@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DeplRecordComponent } from '../depl-record/depl-record.component';
+import { DataService } from '../data.service';
+import { $ } from 'protractor';
+import { ViewerComponent } from '../viewer/viewer.component';
 
 @Component({
   selector: 'app-depl-records',
@@ -9,7 +12,7 @@ import { DeplRecordComponent } from '../depl-record/depl-record.component';
 export class DeplRecordsComponent implements OnInit {
   deplRecords: Object = {};
   @ViewChild(DeplRecordComponent, { static: false }) depRecordChild: DeplRecordComponent;
-
+  @ViewChild(ViewerComponent, {static: false}) viewerChild: ViewerComponent;
   options = [
     { name: 'Implementation-Title', value: 'Implementation-Title', checked: true },
     { name: 'Implementation-Version', value: 'Implementation-Version', checked: true },
@@ -29,15 +32,15 @@ export class DeplRecordsComponent implements OnInit {
 
   selectedEnv: string = this.environments[0];
 
-  constructor() {
+  constructor(private _svc: DataService) {
   }
 
   ngOnInit() {
-
+   
   }
 
   onOptionsSelected(value) {
     this.depRecordChild.load(value);
+    this.viewerChild.load(value);
   }
-
 }

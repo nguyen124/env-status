@@ -22,5 +22,29 @@
         "pathRewrite": {
             "^/uat601": ""
         }
+    },
+    "/student-cct601": {
+        "target": "https://studentaid.cct601.dcc.atagc.com",
+        "secure": false,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/student-cct601": ""
+        }
+    },
+    "/student-pdt601": {
+        "target": "https://studentaid.pdt601.dcc.atagc.com",
+        "secure": false,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/student-pdt601": ""
+        }
+    },
+    "/student-uat601": {
+        "target": "https://studentaid.uat601.dcc.atagc.com",
+        "secure": false,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/student-uat601": ""
+        }
     }
 }
